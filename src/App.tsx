@@ -1,9 +1,13 @@
 import Alert from "./components/Alert";
 import ListGroup from "./components/ListGroup";
+import Button from "./components/Button";
+import { useState } from "react";
 
 function App() {
   let items = ["New York", "San Francisco", "London", "Paris"];
   let names = ["Abner", "Bbner", "Cbner", "Dbner"];
+
+  const [counter, setCounter] = useState(0);
 
   const handleSelectCity = (item: string) => {
     if (item === "Paris") {
@@ -30,6 +34,24 @@ function App() {
       />
 
       <Alert>Alert</Alert>
+
+      <h1>Counter: {counter}</h1>
+      <Button
+        color="success"
+        onClick={() => {
+          setCounter(counter + 1);
+        }}
+      >
+        Increase Count
+      </Button>
+      <Button
+        color="danger"
+        onClick={() => {
+          if (counter > 0) setCounter(counter - 1);
+        }}
+      >
+        Decrease Count
+      </Button>
     </div>
   );
 }
