@@ -8,6 +8,7 @@ function App() {
   let names = ["Abner", "Bbner", "Cbner", "Dbner"];
 
   const [counter, setCounter] = useState(0);
+  const [alertVisible, setAlertVisibility] = useState(false);
 
   const handleSelectCity = (item: string) => {
     if (item === "Paris") {
@@ -33,12 +34,21 @@ function App() {
         onSelectItem={handleSelectName}
       />
 
-      <Alert>Alert</Alert>
+      {alertVisible && (
+        <Alert
+          onClose={() => {
+            setAlertVisibility(false);
+          }}
+        >
+          The minimum count is 0
+        </Alert>
+      )}
 
       <h1>Counter: {counter}</h1>
       <Button
         color="success"
         onClick={() => {
+          setAlertVisibility(false);
           setCounter(counter + 1);
         }}
       >
@@ -47,7 +57,10 @@ function App() {
       <Button
         color="danger"
         onClick={() => {
-          if (counter > 0) setCounter(counter - 1);
+          if (counter > 0) {
+            setAlertVisibility(false);
+            setCounter(counter - 1);
+          } else setAlertVisibility(true);
         }}
       >
         Decrease Count

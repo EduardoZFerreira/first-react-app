@@ -15,6 +15,7 @@ function ListGroup({ items, heading, onSelectItem }: ListGroupProps) {
 
   const handleClick = (event: MouseEvent, index: any) => {
     setSelectedIndex(index);
+    console.log(event);
   };
 
   return (
