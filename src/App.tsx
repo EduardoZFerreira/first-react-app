@@ -1,3 +1,4 @@
+import Alert from "./components/Alert";
 import ListGroup from "./components/ListGroup";
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
         heading="Abner"
         onSelectItem={handleSelectName}
       />
+
+      <Alert>Alert</Alert>
     </div>
   );
 }
